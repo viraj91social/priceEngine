@@ -1,8 +1,8 @@
 package com.priceEngine.model.components;
 
-import com.priceEngine.service.TestUtils;
 import com.priceEngine.model.components.seat.Seating;
 import com.priceEngine.service.PriceUtil;
+import com.priceEngine.service.Utils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,13 @@ class SeatingTest {
 
     private static LocalDate date;
     private static PriceUtil priceUtil;
-    private static TestUtils testUtils;
+    private static Utils testUtils;
 
     @BeforeAll
     static void setUp() {
         date = LocalDate.now();
         priceUtil = new PriceUtil();
-        testUtils = new TestUtils();
+        testUtils = new Utils();
     }
 
     @Test

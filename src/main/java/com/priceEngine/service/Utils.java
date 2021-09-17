@@ -25,6 +25,10 @@ import com.priceEngine.model.components.wheel.parts.Tyre;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility function to create Objects of different kinds based on some parameter
+ * Helpful for testing the functionality.
+ */
 public class Utils {
 
     public Cycle getDefaultCycle() {
@@ -32,7 +36,7 @@ public class Utils {
         components.add(getDefaultWheels());
         components.add(getDefaultFrame());
         components.add(getDefaultSeating());
-        components.add(getDefaultChainAssembly());
+        components.add(getDefaultChainAssembly(1));
         components.add(getDefaultHandleAndBrakes());
         Cycle cycle = new Cycle(components);
         return cycle;
@@ -90,16 +94,17 @@ public class Utils {
         return seating;
     }
 
-    public ChainAssembly testChainAssemblyWith4Gears(int numberOfGears) {
-        List<Part> chainAssemblyParts = new ArrayList<>();
-        chainAssemblyParts.add(new ChainRing("normal"));
-        chainAssemblyParts.add(new Gear(4));
-        ChainAssembly chainAssembly = new ChainAssembly(chainAssemblyParts);
-        return chainAssembly;
+    public ChainAssembly getChainAssemblyWith4Gears() {
+        return getDefaultChainAssembly(4);
     }
 
-    public ChainAssembly getDefaultChainAssembly() {
-        return testChainAssemblyWith4Gears(1);
+    public ChainAssembly getDefaultChainAssembly(int numberOfGears) {
+        List<Part> chainAssemblyParts = new ArrayList<>();
+        chainAssemblyParts.add(new ChainRing("normal"));
+        chainAssemblyParts.add(new Gear(numberOfGears));
+        ChainAssembly chainAssembly = new ChainAssembly(chainAssemblyParts);
+        return chainAssembly;
+
     }
 
     public HandleBarWithBrake getDefaultHandleAndBrakes() {

@@ -1,7 +1,7 @@
 package com.priceEngine.model;
 
-import com.priceEngine.service.TestUtils;
 import com.priceEngine.service.PriceUtil;
+import com.priceEngine.service.Utils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,19 +14,19 @@ class CycleTest {
 
     private static LocalDate date;
     private static PriceUtil priceUtil;
-    private static TestUtils testUtils;
+    private static Utils testUtils;
 
     @BeforeAll
     static void setUp() {
         date = LocalDate.now();
         priceUtil = new PriceUtil();
-        testUtils = new TestUtils();
+        testUtils = new Utils();
     }
 
     @Test
     void testCyclePrice() {
         Cycle cycle = testUtils.getDefaultCycle();
-        assertEquals(3470.0, priceUtil.getComponentsPrice(cycle.getComponents(), date));
+        assertEquals(3320, priceUtil.getComponentsPrice(cycle.getComponents(), date));
     }
 
     @AfterEach

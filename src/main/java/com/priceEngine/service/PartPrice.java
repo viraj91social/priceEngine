@@ -2,6 +2,11 @@ package com.priceEngine.service;
 
 import java.time.LocalDate;
 
+
+/**
+ * Responsible for fetching prices of various parts
+ * from DB or through API.
+ */
 public class PartPrice {
 
     private static PartPrice partPrice;

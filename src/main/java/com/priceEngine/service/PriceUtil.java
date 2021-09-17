@@ -23,4 +23,12 @@ public class PriceUtil {
         }
         return price;
     }
+
+    public double getPartsAssemblyCost() {
+        return 0;
+    }
+
+    public double getComponentsAssemblyCost() {
+        return 0;
+    }
 }
