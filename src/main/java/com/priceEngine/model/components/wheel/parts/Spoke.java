@@ -1,7 +1,8 @@
 package com.priceEngine.model.components.wheel.parts;
 
 import com.priceEngine.model.Part;
-import com.priceEngine.service.PartPrice;
+import com.priceEngine.service.FetchPartPrice;
+import com.priceEngine.service.PartPriceNotFoundException;
 
 import java.time.LocalDate;
 
@@ -15,8 +16,8 @@ public class Spoke implements Part {
     }
 
     @Override
-    public double getPrice(LocalDate date) {
-        this.price = PartPrice.getInstance().fetchSpokePrice(type, date);
+    public double getPrice(LocalDate date) throws PartPriceNotFoundException {
+        this.price = FetchPartPrice.getInstance().fetchSpokePrice(type, date);
         return this.price;
     }
 

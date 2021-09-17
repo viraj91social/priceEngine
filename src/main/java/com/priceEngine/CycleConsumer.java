@@ -1,12 +1,14 @@
 package com.priceEngine;
 
-import com.priceEngine.model.Component;
 import com.priceEngine.model.Cycle;
+import com.priceEngine.service.PartPriceNotFoundException;
 import com.priceEngine.service.PriceUtil;
 
 import java.time.LocalDate;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CycleConsumer implements Runnable {
 
@@ -27,8 +29,12 @@ public class CycleConsumer implements Runnable {
                 Cycle cycle = cycleBlockingQueue.poll(1, TimeUnit.SECONDS);
                 if(this.count >= NO_OF_CYCLES)
                     return;
-
-                double price = priceUtil.getComponentsPrice(cycle.getComponents(), date);
+                double price = 0;
+                try {
+                    price = priceUtil.getComponentsPrice(cycle.getComponents(), date);
+                } catch (PartPriceNotFoundException e) {
+                    Logger.getAnonymousLogger().log(Level.INFO, e.getMessage());
+                }
                 System.out.println(Thread.currentThread().getName() + " Cycle Price: " + price);
                 this.count++;
             }

@@ -27,13 +27,21 @@ class WheelsTest {
     @Test
     void testWheelPrice() {
         Wheels wheels = testUtils.getDefaultWheels();
-        assertEquals(960.0, priceUtil.getPartsPrice(wheels.getParts(), date));
+        try {
+            assertEquals(960.0, priceUtil.getPartsPrice(wheels.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @Test
     void testTubeLessTyreWheelPrice() {
         Wheels wheels = testUtils.getTubelessWheels();
-        assertEquals(900.0, priceUtil.getPartsPrice(wheels.getParts(), date));
+        try {
+            assertEquals(900.0, priceUtil.getPartsPrice(wheels.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @AfterEach

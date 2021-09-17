@@ -27,13 +27,21 @@ class ChainAssemblyTest {
     @Test
     void testDefaultChainAssembly() {
         ChainAssembly chainAssembly = testUtils.getDefaultChainAssembly(1);
-        assertEquals(450.0, priceUtil.getPartsPrice(chainAssembly.getParts(), date));
+        try {
+            assertEquals(450.0, priceUtil.getPartsPrice(chainAssembly.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @Test
     void testChainAssemblyWith4Gears() {
         ChainAssembly chainAssembly = testUtils.getChainAssemblyWith4Gears();
-        assertEquals(600.0, priceUtil.getPartsPrice(chainAssembly.getParts(), date));
+        try {
+            assertEquals(600, priceUtil.getPartsPrice(chainAssembly.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @AfterEach

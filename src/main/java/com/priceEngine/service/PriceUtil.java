@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PriceUtil {
 
-    public double getComponentsPrice(List<Component> components, LocalDate date) {
+    public double getComponentsPrice(List<Component> components, LocalDate date) throws PartPriceNotFoundException{
         double price = 0;
         for (Component component : components) {
             price += getPartsPrice(component.getParts(), date);
@@ -16,7 +16,7 @@ public class PriceUtil {
         return price;
     }
 
-    public double getPartsPrice(List<Part> parts, LocalDate date) {
+    public double getPartsPrice(List<Part> parts, LocalDate date) throws PartPriceNotFoundException{
         double price = 0;
         for (Part part : parts) {
             price += part.getPrice(date);

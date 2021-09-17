@@ -27,13 +27,21 @@ class SeatingTest {
     @Test
     void testSoftSeatingPrice() {
         Seating seating = testUtils.getSoftSeating();
-        assertEquals(200, priceUtil.getPartsPrice(seating.getParts(), date));
+        try {
+            assertEquals(200, priceUtil.getPartsPrice(seating.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @Test
     void testDefaultSeatingPrice() {
         Seating seating = testUtils.getDefaultSeating();
-        assertEquals(180, priceUtil.getPartsPrice(seating.getParts(), date));
+        try {
+            assertEquals(180, priceUtil.getPartsPrice(seating.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @AfterEach

@@ -27,13 +27,21 @@ class FrameTest {
     @Test
     void testSteelFramePrice() {
         Frame frame = testUtils.getSteelFrame();
-        assertEquals(900, priceUtil.getPartsPrice(frame.getParts(), date));
+        try {
+            assertEquals(900, priceUtil.getPartsPrice(frame.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @Test
     void testNormalFramePrice() {
         Frame frame = testUtils.getDefaultFrame();
-        assertEquals(800, priceUtil.getPartsPrice(frame.getParts(), date));
+        try {
+            assertEquals(800, priceUtil.getPartsPrice(frame.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @AfterEach

@@ -26,13 +26,21 @@ class HandleBarWithBrakeTest {
     @Test
     void testHandleBarAndBrakesPrice() {
         HandleBarWithBrake handleBarWithBrake = testUtils.getDefaultHandleAndBrakes();
-        assertEquals(930, priceUtil.getPartsPrice(handleBarWithBrake.getParts(), date));
+        try {
+            assertEquals(930, priceUtil.getPartsPrice(handleBarWithBrake.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
     @Test
     void testHandleBarWithDiskBrakesPrice() {
         HandleBarWithBrake handleBarWithBrake = testUtils.getHandleWithDiskBrakes();
-        assertEquals(980, priceUtil.getPartsPrice(handleBarWithBrake.getParts(), date));
+        try {
+            assertEquals(980, priceUtil.getPartsPrice(handleBarWithBrake.getParts(), date));
+        } catch (Exception e) {
+            assertTrue(false);
+        }
     }
 
 }

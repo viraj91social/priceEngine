@@ -1,5 +1,6 @@
 package com.priceEngine.model;
 
+import com.priceEngine.service.PartPriceNotFoundException;
 import com.priceEngine.service.PriceUtil;
 import com.priceEngine.service.Utils;
 import org.junit.jupiter.api.AfterEach;
@@ -26,7 +27,23 @@ class CycleTest {
     @Test
     void testCyclePrice() {
         Cycle cycle = testUtils.getDefaultCycle();
-        assertEquals(3320, priceUtil.getComponentsPrice(cycle.getComponents(), date));
+        try {
+            assertEquals(3320, priceUtil.getComponentsPrice(cycle.getComponents(), date));
+        } catch (PartPriceNotFoundException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testExceptionWhileFetchingPrice() {
+        Cycle cycle = testUtils.getFaultyCycle();
+        double price;
+        try {
+            price = priceUtil.getComponentsPrice(cycle.getComponents(), date);
+            assertTrue(false);
+        } catch (PartPriceNotFoundException e) {
+            assertTrue(true);
+        }
     }
 
     @AfterEach

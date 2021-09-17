@@ -42,9 +42,30 @@ public class Utils {
         return cycle;
     }
 
+    public Cycle getFaultyCycle() {
+        List<Component> components = new ArrayList<>();
+        components.add(getFaultyWheels());
+        components.add(getDefaultFrame());
+        components.add(getDefaultSeating());
+        components.add(getDefaultChainAssembly(1));
+        components.add(getDefaultHandleAndBrakes());
+        Cycle cycle = new Cycle(components);
+        return cycle;
+    }
+
     public Wheels getDefaultWheels() {
         List<Part> wheelParts = new ArrayList<>();
         wheelParts.add(new Spoke("premium"));
+        wheelParts.add(new Rim("premium"));
+        wheelParts.add(new Tube("premium"));
+        wheelParts.add(new Tyre("premium"));
+        Wheels wheels = new Wheels(wheelParts, wheelParts);
+        return wheels;
+    }
+
+    public Wheels getFaultyWheels() {
+        List<Part> wheelParts = new ArrayList<>();
+        wheelParts.add(new Spoke("faulty"));
         wheelParts.add(new Rim("premium"));
         wheelParts.add(new Tube("premium"));
         wheelParts.add(new Tyre("premium"));

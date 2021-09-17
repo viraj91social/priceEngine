@@ -1,25 +1,26 @@
 package com.priceEngine;
 
 import com.priceEngine.model.Cycle;
-import com.priceEngine.service.Utils;
 
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class CycleProducer implements Runnable {
 
     private BlockingQueue<Cycle> cycleBlockingQueuequeue;
-    private static Utils utils = new Utils();
     private final int NO_OF_CYCLES;
+    private List<Cycle> cycles;
 
-    CycleProducer(BlockingQueue<Cycle> queue, int noOfProducers) {
+    CycleProducer(BlockingQueue<Cycle> queue, int noOfProducers, List<Cycle> cycles) {
         this.cycleBlockingQueuequeue = queue;
         this.NO_OF_CYCLES = noOfProducers;
+        this.cycles = cycles;
     }
 
     public void run() {
         try {
-            for(int i = 0; i < this.NO_OF_CYCLES; i++) {
-                cycleBlockingQueuequeue.put(utils.getDefaultCycle());
+            for(Cycle cycle : cycles) {
+                cycleBlockingQueuequeue.put(cycle);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
