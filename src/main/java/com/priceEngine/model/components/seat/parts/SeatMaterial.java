@@ -2,7 +2,7 @@ package com.priceEngine.model.components.seat.parts;
 
 import com.priceEngine.model.Part;
 import com.priceEngine.service.FetchPartPrice;
-import com.priceEngine.service.PartPriceNotFoundException;
+import com.priceEngine.exception.PartPriceNotFoundException;
 
 import java.time.LocalDate;
 

@@ -1,7 +1,7 @@
 package com.priceEngine;
 
 import com.priceEngine.model.Cycle;
-import com.priceEngine.service.PartPriceNotFoundException;
+import com.priceEngine.exception.PartPriceNotFoundException;
 import com.priceEngine.service.PriceUtil;
 
 import java.time.LocalDate;

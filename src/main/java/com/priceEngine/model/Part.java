@@ -1,6 +1,6 @@
 package com.priceEngine.model;
 
-import com.priceEngine.service.PartPriceNotFoundException;
+import com.priceEngine.exception.PartPriceNotFoundException;
 
 import java.time.LocalDate;
 

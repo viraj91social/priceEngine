@@ -1,5 +1,6 @@
 package com.priceEngine.service;
 
+import com.priceEngine.exception.PartPriceNotFoundException;
 import com.priceEngine.model.Component;
 import com.priceEngine.model.Part;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class PriceUtil {
 
-    public double getComponentsPrice(List<Component> components, LocalDate date) throws PartPriceNotFoundException{
+    public double getComponentsPrice(List<Component> components, LocalDate date) throws PartPriceNotFoundException {
         double price = 0;
         for (Component component : components) {
             price += getPartsPrice(component.getParts(), date);
